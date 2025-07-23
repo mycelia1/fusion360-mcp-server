@@ -38,7 +38,6 @@ A modern Model Context Protocol (MCP) server for Autodesk Fusion 360, built from
 
 - Python 3.10 or higher
 - Autodesk Fusion 360
-- Access to the MCP SDK (included in this project)
 
 ## 🔧 Installation
 
@@ -48,14 +47,14 @@ A modern Model Context Protocol (MCP) server for Autodesk Fusion 360, built from
    cd fusion360-mcp
    ```
 
-2. **Install dependencies using uv (recommended):**
-   ```bash
-   uv sync
-   ```
-   
-   Or using pip:
+2. **Install dependencies using pip (recommended):**
    ```bash
    pip install -e .
+   ```
+   
+   Or using uv:
+   ```bash
+   uv sync
    ```
 
 3. **Verify installation:**
@@ -91,13 +90,10 @@ With the add-in installed, your MCP client can directly execute commands in Fusi
 
 ### Running as MCP Server (Default)
 
-For integration with Claude Desktop or other MCP clients:
-
+Run the server locally:
 ```bash
-fusion360-mcp
+python -m fusion360_mcp
 ```
-
-This starts the server in stdio mode, which is the standard for MCP client integration.
 
 ### Running as SSE Server
 
@@ -106,6 +102,7 @@ For web-based integration or testing:
 ```bash
 fusion360-mcp --transport sse --port 8000
 ```
+Test with MCP client or SSE mode for web testing.
 
 ## 🔗 Claude Desktop Integration
 
@@ -115,8 +112,14 @@ Add this configuration to your Claude Desktop MCP settings:
 {
   "mcpServers": {
     "fusion360": {
-      "command": "fusion360-mcp",
-      "args": [],
+      "command": "python",
+      "args": [
+        "-m",
+        "fusion360_mcp",
+        "--mode",
+        "socket"
+      ],
+      "cwd": "C:/path/to/your/fusion360-mcp-project",
       "env": {}
     }
   }
@@ -218,14 +221,6 @@ def stop(context):
 2. Add script template to `SCRIPT_TEMPLATES` in `script_generator.py`
 3. Add any special handling logic in `generate_script()`
 
-### Testing
-
-Run the server locally:
-```bash
-python -m fusion360_mcp
-```
-
-Test with MCP client or SSE mode for web testing.
 
 ## 📄 License
 
