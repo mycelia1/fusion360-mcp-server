@@ -41,10 +41,11 @@ A modern Model Context Protocol (MCP) server for Autodesk Fusion 360, built from
 
 ## 🔧 Installation
 
-1. **Clone or create the project directory:**
+1. **Clone the project directory:**
    ```bash
-   mkdir fusion360-mcp
-   cd fusion360-mcp
+   git clone https://github.com/mycelia1/fusion360-mcp-server.git
+
+   cd fusion360-mcp-server
    ```
 
 2. **Install dependencies using pip (recommended):**
@@ -59,7 +60,7 @@ A modern Model Context Protocol (MCP) server for Autodesk Fusion 360, built from
 
 3. **Verify installation:**
    ```bash
-   fusion360-mcp --help
+   python -m fusion360_mcp --help
    ```
 
 ## 🔌 Fusion360 Add-in Installation (Optional)
