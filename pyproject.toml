@@ -1,0 +1,59 @@
+[project]
+name = "fusion360-mcp-server"
+version = "0.1.0"
+description = "Model Context Protocol server for Autodesk Fusion 360 CAD automation"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Fusion360 MCP Server" }]
+keywords = ["mcp", "fusion360", "cad", "automation", "3d-modeling"]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "anyio>=4.5",
+    "click>=8.1.0", 
+    "httpx>=0.27",
+    "mcp",
+    "pydantic>=2.8.0",
+    "uvicorn>=0.23.1",
+]
+
+[project.scripts]
+fusion360-mcp = "fusion360_mcp.server:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pyright]
+include = ["src"]
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.uv]
+dev-dependencies = [
+    "pyright>=1.1.378", 
+    "pytest>=8.3.3", 
+    "ruff>=0.6.9"
+] 

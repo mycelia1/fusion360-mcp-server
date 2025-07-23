@@ -1,0 +1,13 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "addin",
+  "id": "6b98393d-7998-4d19-a8e5-c8b5e3d7f4a2",
+  "author": "Fusion360MCP",
+  "description": {
+    "": "Fusion360 MCP Server - Connect Fusion360 to Claude AI via Model Context Protocol"
+  },
+  "version": "1.0.0",
+  "runOnStartup": false,
+  "supportedOS": "windows|mac",
+  "editEnabled": true
+} 
